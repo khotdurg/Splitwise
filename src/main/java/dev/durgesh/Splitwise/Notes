@@ -1,0 +1,48 @@
+* Selected dependencies:
+    - MySQL Driver
+    - Lombok: java annotation library which helps to reduce boilerplate code
+    - Spring Web: Build web, including RESTful, applications using Spring MVC. Uses Apache Tomcat as the default embedded
+     container.
+    - Spring Data JPA: Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.
+    - Spring Security: Highly customizable authentication and access-control framework for Spring applications.
+
+* We have added Spring Security in that case Authorization error we might face, inorder to avoid such error we must use
+(exclude = {SecurityAutoConfiguration.class}) on top of the Main class. it is like
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+
+* @MappedSuperclass:
+indicating that it will serve as a superclass for other entity classes. This means that any entity
+class that extends BaseModel will inherit its properties (id, createdAt, updatedAt) and their mappings, but BaseModel
+itself will not be mapped to a separate table in the database.
+
+* @Id: The @Id annotation indicates that the id field is the primary key for the entities inheriting from BaseModel.
+
+* @GeneratedValue(strategy = GenerationType.AUTO): GenerationType.AUTO indicates that the persistence provider should
+automatically choose an appropriate strategy for generating primary key values. This could involve using identity columns,
+sequences, or other mechanisms supported by the underlying database.
+
+* Annotation use for Enums: @Enumerated(EnumType.STRING)
+
+* For Signup API: we need to hit call POST: http://localhost:8080/signup
+body
+{
+    "name" : "Durgesh",
+    "email" : "durgesh@email.com",
+    "password" : "abcd"
+}
+
+
+
+
+
+
+
+
+
+
+
+- entity
+- jdbc db connection
+- settleUpStrategy
+- userController
+- UserRegistrationRequestDTO
